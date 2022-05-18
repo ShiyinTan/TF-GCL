@@ -48,9 +48,13 @@ or
 python main_dynamicCL_ver1.py --h_feats_list 256 --data=ReTweet --epochs=2000 --emb_size=256 --lr=5e-3 --cl_loss_weight=1.0 --cl_batch_size=256 --neg_class_weight=0.4 --temporal_weight_loss=true --cl_loss=true --decay_by=day --ts_decay_rate=0.01 --concat=false --temporal_cl_loss=true --neighbor_as_pos=true --symmetric_cl_loss=true --eval_epochs=1 --fea_drop_percent=0.6 --edge_pert_percent=0.6 --ts_mask_percent=0.6
 ```
 `h_feats_list` construct the GCNs encoder, for example `--h_feats_list 256 128` construct a two layer GCNs encoder, which have 256 and 128 hidden dimension.
+
 `cl_batch_size` is the balance weight of TF-GCL
+
 `fea_drop_percent` is the drop rate of augmentation feature masking
+
 `edge_pert_percent` is the edge ratio of augmentation edge perturbation
+
 `ts_mask_percent` is the edge ratio of augmentation timestamp masking
 
 
@@ -63,8 +67,10 @@ where G.edges is the edgelist file with timestamps. column 1 is the start node, 
 ```
 3 9 0
 1 3 13
-2 4  50
+2 4 50
 ...
 ```
+
+In dataload directory, we preprocessing the G.edges file, and split it to train.edges and test.edges for temporal link prediction evaluation.
 
 
